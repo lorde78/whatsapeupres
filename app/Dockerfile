@@ -13,8 +13,8 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
     &&  curl -sS https://getcomposer.org/installer | php -- \
     &&  mv composer.phar /usr/local/bin/composer \
 \
-    &&  curl -sS https://get.symfony.com/cli/installer | bash \
-    &&  mv /root/.symfony/bin/symfony /usr/local/bin \
+    && curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash \
+    && apt install symfony-cli \
 \
     &&  docker-php-ext-configure \
             intl \
