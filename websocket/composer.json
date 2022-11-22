@@ -11,5 +11,10 @@
             "email": "amin.bentani@hetic.net"
         }
     ],
-    "require": {}
+    "require": {
+        "cboden/ratchet": "^0.4.4",
+        "firebase/php-jwt": "^6.3",
+        "thruway/pawl-transport": "^0.5.2",
+        "voryx/thruway": "^0.6.1"
+    }
 }
