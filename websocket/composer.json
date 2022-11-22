@@ -1,0 +1,15 @@
+{
+    "name": "dev/websocket",
+    "autoload": {
+        "psr-4": {
+            "Websocket\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Amin Bentani",
+            "email": "amin.bentani@hetic.net"
+        }
+    ],
+    "require": {}
+}
