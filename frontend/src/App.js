@@ -8,19 +8,6 @@ import Login from "./Auth/Login";
 import UserProvider from "./Context/UserContext";
 
 function App() {
-    const handleMessage = ( e ) => {
-        console.log( JSON.parse( e.data ) );
-    };
-
-    useEffect( () => {
-        const url = new URL( 'http://localhost:3000/.well-known/mercure' );
-        url.searchParams.append('topic','lien de mon topic privé');
-        const eventSource = new EventSource(url, {withCredentials: true});
-        eventSource.onmessage = handleMessage;
-        return () => {
-            eventSource.close();
-        }
-    }, []);
     return (
         <UserProvider>
             <BrowserRouter>

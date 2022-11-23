@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\Cookie;
 class CookieHelper
 {
 
-    private string $mercureSecret;
+    // private string $mercureSecret;
     private JWTHelper $JWTHelper;
 
-    public function __construct(string $mercureSecret, JWTHelper $JWTHelper)
+    public function __construct(JWTHelper $JWTHelper)
     {
-        $this->mercureSecret = $mercureSecret;
+        // $this->mercureSecret = $mercureSecret;
         $this->JWTHelper = $JWTHelper;
     }
 
