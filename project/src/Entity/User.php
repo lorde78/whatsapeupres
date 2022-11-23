@@ -57,7 +57,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
+        return array_unique( $roles );
     }
 
     public function setRoles( array $roles )
@@ -113,8 +113,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
         // TODO: Implement eraseCredentials() method.
     }
 
-    public function getUserIdentifier()
-    : string {
-        // TODO: Implement getUserIdentifier() method.
+    public function getUserIdentifier(): string {
+        return $this->getUsername();
     }
 }

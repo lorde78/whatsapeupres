@@ -1,6 +1,8 @@
-import {useEffect, useState} from "react";
+import { useContext, useEffect, useState } from 'react';
 import useGetUserList from "../Hook/useGetUserList";
 import useBackendPing from "../Hook/useBackendPing";
+import jwtDecode from 'jwt-decode';
+import {userContext} from "../Context/UserContext";
 
 export default function UserList() {
     const [userList, setUserList] = useState([]);
@@ -25,6 +27,7 @@ export default function UserList() {
 
     useEffect(() => {
         getUserList().then(data => setUserList(data.users));
+        console.log(userList);
 
         const url = new URL('http://localhost:9090/.well-known/mercure');
         url.searchParams.append('topic', 'https://example.com/my-private-topic');
@@ -38,6 +41,7 @@ export default function UserList() {
 
     }, [])
 
+
     return (
         <div>
             <h1 className='m-5 text-center'>Ping a user</h1>
@@ -45,7 +49,6 @@ export default function UserList() {
                 <form className='w-75 mx-auto mb-3' onSubmit={handleSubmit}>
                     <button className='btn btn-dark w-100' type='submit' value={user.id}>{user.username}</button>
                 </form>
-
             ))}
         </div>
     )

@@ -18,7 +18,7 @@ class CookieHelper
         $this->JWTHelper = $JWTHelper;
     }
 
-    public function createMercureCookie(User $user): string
+    public function buildCookie(User $user): string
     {
         $jwt = $this->JWTHelper->createJWT($user);
 
@@ -26,9 +26,9 @@ class CookieHelper
             'mercureAuthorization',
             $jwt,
             new \DateTime("10 minutes"),
-            '/.well-known/mercure',
+            '/',
             'localhost',
-            true,
+            false,
             true,
             false,
             Cookie::SAMESITE_STRICT

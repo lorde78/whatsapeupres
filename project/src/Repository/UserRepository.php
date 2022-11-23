@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -36,11 +37,11 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     $this->_em->flush();
   }
 
-  public function findAllButMe(User $user)
+  public function findAllButMe(UserInterface $user)
   {
     return $this->createQueryBuilder('user')
                 ->andWhere('user.username != :val')
-                ->setParameter('val', $user->getUsername())
+                ->setParameter('val', $user->getUserIdentifier())
                 ->getQuery()
                 ->getResult();
   }

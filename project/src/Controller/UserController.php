@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,6 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserController extends AbstractController {
     #[Route( '/user', name: 'app_user' )]
@@ -28,15 +30,14 @@ class UserController extends AbstractController {
         ] );
     }*/
 
-    #[Route( '/', name: 'app_users' )]
+    #[Route( '/users-list', name: 'app_users' )]
     public function getAllUsers( UserRepository $userRepository ) {
 
         return $this->json(
-            ['users' => $userRepository->findAll()],
-            200,
-            [],
-            ['groups'=> ['main']]
+            ['users' => $userRepository->findAllButMe($this->getUser())]
+
         );
     }
+
 
 }

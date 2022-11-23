@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/test", name="app_test")
      */
     public function login(JWTHelper $helper, HubInterface $hub, CookieHelper $cookieHelper): Response
     {
@@ -43,7 +43,7 @@ class SecurityController extends AbstractController
             return $this->json([
                 'JWT' => $helper->createJWT($user)
             ], 200, [
-                'set-cookie' => $cookieHelper->createMercureCookie($user)
+                'set-cookie' => $cookieHelper->buildCoockie($user)
             ]);
         }
 

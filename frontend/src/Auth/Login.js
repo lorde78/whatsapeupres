@@ -1,4 +1,4 @@
-import {useLocation, useNavigate, navigate} from "react-router-dom";
+import {useLocation, useNavigate, Navigate} from "react-router-dom";
 import {useContext, useState} from "react";
 import {userContext} from "../Context/UserContext";
 import useGetJWT from "../Hook/useGetJWT";
@@ -24,9 +24,11 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         getJWT(username, password).then(data => {
-            if (data.JWT) {
-                setLoggedUser(data.JWT);
+            if (data) {
+                console.log(data);
+                setLoggedUser(data);
                 navigate(from, {replace: true});
+
             } else {
                 console.log(data)
             }

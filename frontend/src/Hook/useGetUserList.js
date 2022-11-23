@@ -1,8 +1,9 @@
 export default function useGetUserList() {
     return function () {
-        return fetch('http://localhost:8245/user-list', {
+        return fetch('http://localhost:8245/users-list', {
             method: 'GET',
-            mode: "cors"
+            mode: "cors",
+            credentials: "include"
         })
             .then(data => data.json())
     }

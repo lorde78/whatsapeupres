@@ -10,9 +10,9 @@ class JWTHelper
 {
     private string $mercureSecret;
 
-    public function __construct(string $mercureSecret)
+    public function __construct()
     {
-        $this->mercureSecret = $mercureSecret;
+        $this->mercureSecret = '!ChangeMe!';
     }
 
     public function createJWT(User $user): string
