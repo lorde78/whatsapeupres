@@ -1,3 +1,4 @@
+import data from "bootstrap/js/src/dom/data";
 
 export default function useGetJWT() {
 

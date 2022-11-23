@@ -25,7 +25,7 @@ function App() {
         <UserProvider>
             <BrowserRouter>
                 <Routes>
-                    {/* <Route path='/' element={<NeedAuth><UserList/></NeedAuth>}></Route> */}
+                    <Route path='/' element={<NeedAuth><UserList/></NeedAuth>}></Route>
                     <Route path='/login' element={<Login/>}></Route>
                 </Routes>
             </BrowserRouter>
