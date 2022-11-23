@@ -1,6 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NeedAuth from "./Auth/NeedAuth";
+import UserList from "./Component/UserList";
+import Login from "./Auth/Login";
+import UserProvider from "./Context/UserContext";
 
 function App() {
     const handleMessage = ( e ) => {
@@ -8,7 +13,7 @@ function App() {
     };
 
     useEffect( () => {
-        const url = new URL( 'http://localhost:1234/.well-known/mercure' );
+        const url = new URL( 'http://localhost:3000/.well-known/mercure' );
         url.searchParams.append('topic','lien de mon topic privé');
         const eventSource = new EventSource(url, {withCredentials: true});
         eventSource.onmessage = handleMessage;
@@ -17,22 +22,14 @@ function App() {
         }
     }, []);
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
+        <UserProvider>
+            <BrowserRouter>
+                <Routes>
+                    {/* <Route path='/' element={<NeedAuth><UserList/></NeedAuth>}></Route> */}
+                    <Route path='/login' element={<Login/>}></Route>
+                </Routes>
+            </BrowserRouter>
+        </UserProvider>
     );
 }
 
