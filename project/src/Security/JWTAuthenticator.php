@@ -25,8 +25,9 @@ class JWTAuthenticator extends AbstractAuthenticator {
     : Passport {
         $jwt = $request->cookies->get( 'mercureAuthorization' );
         try {
+            
             $jwtDecoded = JWT::decode( $jwt, new Key( '!ChangeMe!', 'HS256' ) );
-
+            
             return new SelfValidatingPassport(new UserBadge($jwtDecoded->mercure->payload->username));
 
         } catch ( \Exception $e ) {
