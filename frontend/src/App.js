@@ -1,15 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route  } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
 import NeedAuth from "./Auth/NeedAuth";
 import UserList from "./Component/UserList";
 import Login from "./Auth/Login";
 import UserProvider from "./Context/UserContext";
+import UserForm from './Component/UserForm';
 
 function App() {
-    let eventSource;
+    // let eventSource;
     const handleMessage = ( e ) => {
         console.log( JSON.parse( e.data ) );
     };
@@ -39,6 +38,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<NeedAuth><UserList/></NeedAuth>}>User list</Route>
                     <Route path='/login' element={<Login/>  }> Login </Route>
+                    <Route path='/register' element={<UserForm/>  }> Register </Route>
                 </Routes>
             </BrowserRouter>
         </UserProvider>

@@ -14,10 +14,11 @@ class PingController extends AbstractController
     #[Route('/ping/{user}', name: 'ping_user', methods: 'POST')]
     public function pingUser(User $user, HubInterface $hub)
     {
+        dd($user);
         $update = new Update(
             [
                 "https://example.com/my-private-topic",
-                "https://example.com/user/{$user->getId()}/?topic=" . urlencode("https://example.com/my-private-topic")
+                "https://example.com/user/{$user->getId()}/?topic=" . urlencode("https://example.com/ping")
             ],
             json_encode([
                 'user' => $user->getUsername(),
