@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ChatRepository::class)]
 class Chat
 {
+    //TODO ajouter le champ idUser pour la relation etre les deux éntité
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

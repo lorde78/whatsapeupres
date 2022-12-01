@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Chat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @extends ServiceEntityRepository<Chat>
@@ -38,6 +39,17 @@ class ChatRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function findAllByUser(UserInterface $user)
+    {
+        return $this->createQueryBuilder('user')
+                    ->andWhere('user.username != :val')
+                    ->setParameter('val', $user->getUserIdentifier())
+                    ->getQuery()
+                    ->getResult();
+    }
+
+
 
 //    /**
 //     * @return Chat[] Returns an array of Chat objects

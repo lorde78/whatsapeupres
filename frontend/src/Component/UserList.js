@@ -14,14 +14,14 @@ export default function UserList() {
         e.preventDefault();
         const userId = e.target[0].value;
         console.log(userId);
-        backendPing(userId)
-        // .then(data => console.log(data))
+        backendPing(userId).then(data => console.log(data))
     }
 
     const handleMessage = (e) => {
         document.querySelector('h1').insertAdjacentHTML('afterend', '<div class="alert alert-success w-75 mx-auto">Ping !</div>');
         window.setTimeout(() => {
             const $alert = document.querySelector('.alert');
+
             $alert.parentNode.removeChild($alert);
         }, 2000);
     }
@@ -29,16 +29,15 @@ export default function UserList() {
     useEffect(() => {
         getUserList().then(data => setUserList(data.users));
 
-        const url = new URL('http://localhost:9090/.well-known/mercure');
-        url.searchParams.append('topic', 'https://example.com/ping');
+        const url = new URL( 'http://localhost:9090/.well-known/mercure' );
+        url.searchParams.append( 'topic', 'https://example.com/ping' );
 
-        const eventSource = new EventSource(url, {withCredentials: true});
+        const eventSource     = new EventSource( url, { withCredentials: true } );
         eventSource.onmessage = handleMessage;
 
         return () => {
-            eventSource.close()
-        }
-
+            eventSource.close();
+        };
     }, [])
 
 

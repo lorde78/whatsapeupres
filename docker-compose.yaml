@@ -50,15 +50,15 @@ services:
       networks:
           - dev
 
-  caddy:
+  q:
     image: dunglas/mercure
     restart: unless-stopped
     container_name: mercure_docker
     environment:
       # Uncomment the following line to disable HTTPS
       SERVER_NAME: ':80'
-      MERCURE_PUBLISHER_JWT_KEY: '!ChangeMe!'
-      MERCURE_SUBSCRIBER_JWT_KEY: '!ChangeMe!'
+      MERCURE_PUBLISHER_JWT_KEY: '!ChangeMeTestTestTestTestTestTestTestTest!'
+      MERCURE_SUBSCRIBER_JWT_KEY: '!ChangeMeTestTestTestTestTestTestTestTest!'
       MERCURE_EXTRA_DIRECTIVES:
         cors_origins "http://localhost:3000"
         cors_origins "http://localhost:8245"

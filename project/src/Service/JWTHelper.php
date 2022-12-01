@@ -12,12 +12,13 @@ class JWTHelper
 
     public function __construct()
     {
-        $this->mercureSecret = '!ChangeMe!';
+        $this->mercureSecret = '!ChangeMeTestTestTestTestTestTestTestTest!';
     }
 
     public function createJWT(User $user): string
     {
         $payload = ["mercure" => [
+            "publish" => ["*"],
             "subscribe" => ["https://example.com/user/{$user->getId()}/{?topic}"],
             "payload" => [
                 "username" => $user->getUsername(),

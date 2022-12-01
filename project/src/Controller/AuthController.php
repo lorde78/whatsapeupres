@@ -24,8 +24,9 @@ class AuthController extends AbstractController {
 
             );
         }
+
         return $this->json(
-            [ 'message' => 'Bade credentials' ],
+            [ 'message' => 'Bad credentials' ],
             401
         );
     }

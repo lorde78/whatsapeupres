@@ -1,7 +1,7 @@
 export default function useBackendPing() {
     return function ( userId ) {
         console.log( userId );
-        return fetch( `http://localhost:8245/ping/${userId}`, {
+        return fetch( `http://localhost:8245/chat/${userId}`, {
             method: 'POST',
             mode: "cors",
             credentials: "include"

@@ -28,10 +28,11 @@ class CookieHelper
             new \DateTime("10 minutes"),
             '/',
             'localhost',
-            false,
+            true,
             true,
             false,
             Cookie::SAMESITE_STRICT
         );
+
     }
 }

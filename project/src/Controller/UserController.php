@@ -35,9 +35,6 @@ class UserController extends AbstractController {
 
         return $this->json(
             ['users' => $userRepository->findAllButMe($this->getUser())]
-
         );
     }
-
-
 }

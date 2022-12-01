@@ -23,11 +23,13 @@ class JWTAuthenticator extends AbstractAuthenticator {
 
     public function authenticate( Request $request )
     : Passport {
-        $jwt = $request->cookies->get( 'mercureAuthorization' );
+
+        $jwt = $request->cookies->get( 'mercureAuthorization' ) ?? str_replace('Bearer ', '', getallheaders()['Authorization']);
+
         try {
             
-            $jwtDecoded = JWT::decode( $jwt, new Key( '!ChangeMe!', 'HS256' ) );
-            
+            $jwtDecoded = JWT::decode( $jwt, new Key( '!ChangeMeTestTestTestTestTestTestTestTest!', 'HS256' ) );
+
             return new SelfValidatingPassport(new UserBadge($jwtDecoded->mercure->payload->username));
 
         } catch ( \Exception $e ) {
@@ -43,7 +45,7 @@ class JWTAuthenticator extends AbstractAuthenticator {
 
     public function onAuthenticationFailure( Request $request, AuthenticationException $exception )
     : ?Response {
-        return new JsonResponse( [] );
+        return new JsonResponse( ["message" => "baaad"] );
     }
 
 //    public function start(Request $request, AuthenticationException $authException = null): Response
