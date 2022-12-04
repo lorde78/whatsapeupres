@@ -17,12 +17,17 @@ class ChatController extends AbstractController
     #[Route('/chat/{user}', name: 'app_chat', methods: 'POST')]
     public function sendMessageChat(User $user, HubInterface $hub, string $mercureSecret): JsonResponse
     {
-
+        $target = [];
+        if ($user !== null) {
+            $target = [
+                "https://example.com/user/{$user->getId()}/?topic=" . urlencode("https://example.com/chat")
+            ];
+        }
 
         $update = new Update(
             [
                 "https://example.com/chat/",
-                "https://example.com/user/{$user->getId()}/?topic=" . urlencode("https://example.com/chat")
+                $target
             ],
             json_encode([
                 'user' => $user->getUsername(),
