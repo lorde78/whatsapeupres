@@ -28,9 +28,8 @@ export default function UserList() {
 
     useEffect(() => {
         getUserList().then(data => setUserList(data.users));
-
         const url = new URL( 'http://localhost:9090/.well-known/mercure' );
-        url.searchParams.append( 'topic', 'https://example.com/ping' );
+        url.searchParams.append( 'topic', 'http://caddy/ping' );
 
         const eventSource     = new EventSource( url, { withCredentials: true } );
         eventSource.onmessage = handleMessage;

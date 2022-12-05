@@ -50,7 +50,7 @@ services:
       networks:
           - dev
 
-  q:
+  caddy:
     image: dunglas/mercure
     restart: unless-stopped
     container_name: mercure_docker

@@ -18,8 +18,8 @@ class PingController extends AbstractController
 
                 $update = new Update(
                     [
-                        "https://example.com/ping/",
-                        "https://example.com/user/{$user->getId()}/?topic=" . urlencode("https://example.com/ping")
+                        "http://caddy/ping/",
+                        "http://caddy/user/{$user->getId()}/?topic=" . urlencode("http://caddy/ping")
                     ],
                     json_encode([
                         'user' => $user->getUsername(),
