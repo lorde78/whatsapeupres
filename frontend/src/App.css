@@ -1,38 +1,79 @@
-.App {
-  text-align: center;
+
+body {
+	font-family: JetBrains Mono, monospace;
+	color: #FFFFFF;
+	background-color: #000000;
+	font-size: 24px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+  font-size: 24px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.landing-page {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.landing-page h1{
+	font-size: 48px;
+	color: #66F000;
+	margin-top: 120px;
 }
 
-.App-link {
-  color: #61dafb;
+.landing-page form {
+	border: 5px solid #66F000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.landing-page-login{
+	padding: 40px;
+	width: 750px;
+	height: 400px;
+}
+
+.landing-page span {
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+
+.landing-page-login{
+	color: #66F000;
+}
+
+.landing-page-login-username{
+	margin-bottom: 20px;
+}
+
+.main-button{
+	background-color: #66F000;
+	color: #FFFFFF;
+	font-size: 24px;
+	border: 0; 
+	font-family: JetBrains Mono, monospace;
+	padding: 10px 60px;
+	text-transform: uppercase;
+	text-decoration: none;
+    text-align: center;
+    line-height: 1;
+}
+
+.form-submit-redirect{
+	display: flex;
+	gap: 60px;
+}
+
+.landing-page-login-username input, .landing-page-login-password input {
+	background: transparent;
+    color: #66F000;
+    outline: none;
+    border: none;
+	font-family: JetBrains Mono, monospace;
+	font-size: 24px;
+	letter-spacing: 3px;
 }
