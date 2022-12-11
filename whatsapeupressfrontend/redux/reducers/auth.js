@@ -1,7 +1,7 @@
 // Actions
-const INCREMENT = "INCREMENT";
-const DECREMENT = "DECREMENT";
-const RESET = "RESET";
+const LOGIN = "LOGIN";
+const SIGNUP = "SIGNUP";
+const LOGOUT = "LOGOUT";
 
 // Action creators
 export const login = () => ({
@@ -27,17 +27,17 @@ const rootReducer = (state = initialState, action, data) => {
         case LOGIN:
             return {
                 ...state,
-                user: state = data
+                user: state.user = data
             }
         case SIGNUP:
             return {
                 ...state,
-                user: state = data
+                user: state.user = undefined
             }
         case LOGOUT:
             return {
                 ...state,
-                user: state = null
+                user: state.user = undefined
             }
         default:
             return state
