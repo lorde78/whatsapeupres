@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ChatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ChatRepository::class)]
@@ -18,6 +19,9 @@ class Chat
 
     #[ORM\OneToMany(mappedBy: 'chat', targetEntity: message::class)]
     private Collection $messages;
+
+    #[ORM\Column(type: Types::ARRAY)]
+    private array $idCurrentUserChatRoom = [];
 
     public function __construct()
     {
@@ -55,6 +59,18 @@ class Chat
                 $message->setChat(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIdCurrentUserChatRoom(): array
+    {
+        return $this->idCurrentUserChatRoom;
+    }
+
+    public function setIdCurrentUserChatRoom(array $idCurrentUserChatRoom): self
+    {
+        $this->idCurrentUserChatRoom = $idCurrentUserChatRoom;
 
         return $this;
     }

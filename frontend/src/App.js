@@ -6,6 +6,8 @@ import UserList from './Component/UserList';
 import Login from './Auth/Login';
 import UserProvider from './Context/UserContext';
 import UserForm from './Component/UserForm';
+import ChatRoom from './Component/ChatRoom';
+import QrCode from './Component/QrCode.js';
 
 function App() {
     let eventSource;
@@ -40,6 +42,8 @@ function App() {
                     <Route path="/" element={<NeedAuth><UserList/></NeedAuth>}>User list</Route>
                     <Route path="/login" element={<Login/>}> Login </Route>
                     <Route path="/register" element={<UserForm/>}> Register </Route>
+                    <Route path="/chatroom/{id}" element={<ChatRoom/>}> ChatRoom </Route>
+                    <Route path="/qrcode" element={<QrCode/>}> Qrcode </Route>
                 </Routes>
             </BrowserRouter>
         </UserProvider>

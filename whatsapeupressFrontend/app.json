@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "whatsapeupressFrontend",
-    "slug": "whatsapeupressFrontend",
+    "name": "whatsapeupressfrontend",
+    "slug": "whatsapeupressfrontend",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

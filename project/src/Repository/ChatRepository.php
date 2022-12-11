@@ -10,41 +10,50 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @extends ServiceEntityRepository<Chat>
  *
- * @method Chat|null find($id, $lockMode = null, $lockVersion = null)
- * @method Chat|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Chat|null find( $id, $lockMode = null, $lockVersion = null )
+ * @method Chat|null findOneBy( array $criteria, array $orderBy = null )
  * @method Chat[]    findAll()
- * @method Chat[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Chat[]    findBy( array $criteria, array $orderBy = null, $limit = null, $offset = null )
  */
-class ChatRepository extends ServiceEntityRepository
-{
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Chat::class);
+class ChatRepository extends ServiceEntityRepository {
+    public function __construct( ManagerRegistry $registry ) {
+        parent::__construct( $registry, Chat::class );
     }
 
-    public function save(Chat $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->persist($entity);
+    public function save( Chat $entity, bool $flush = false )
+    : void {
+        $this->getEntityManager()->persist( $entity );
 
-        if ($flush) {
+        if ( $flush ) {
             $this->getEntityManager()->flush();
         }
     }
 
-    public function remove(Chat $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->remove($entity);
+    public function remove( Chat $entity, bool $flush = false )
+    : void {
+        $this->getEntityManager()->remove( $entity );
 
-        if ($flush) {
+        if ( $flush ) {
             $this->getEntityManager()->flush();
         }
     }
 
-    public function findAllByUser(UserInterface $user)
-    {
-        return $this->createQueryBuilder('user')
-                    ->andWhere('user.username != :val')
-                    ->setParameter('val', $user->getUserIdentifier())
+    public function findAllByUser( UserInterface $user ) {
+        return $this->createQueryBuilder( 'user' )
+                    ->andWhere( 'user.username != :val' )
+                    ->setParameter( 'val', $user->getUserIdentifier() )
+                    ->getQuery()
+                    ->getResult();
+    }
+
+    public function findAllByIdCurrentUserChatRoom( $idUser, $currentUser ) {
+        $arrayUsers =  [$currentUser, $idUser] ;
+
+        $objectCurrentUsers = 'a:2:{i:0;i:'.$currentUser.';i:1;s:2:"'. $idUser .'";}';
+
+        return $this->createQueryBuilder( 'chat' )
+                    ->andWhere( 'chat.idCurrentUserChatRoom = :val' )
+                    ->setParameter( 'val', $objectCurrentUsers )
                     ->getQuery()
                     ->getResult();
     }

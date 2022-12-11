@@ -1,4 +1,4 @@
-export default function useGetUserList() {
+export default function useGetMessage() {
     return function () {
         /*get list chats by userId*/
         return fetch(`http://localhost:8245/chats-list/${userId}`, {
@@ -9,3 +9,8 @@ export default function useGetUserList() {
             .then(data => data.json())
     }
 }
+
+
+//TODO corriger la requête fetch
+
+//TODO Faire un regiser coté front
