@@ -1,41 +1,49 @@
-.App {
-  text-align: center;
+body {
+	font-family: JetBrains Mono, monospace;
+	color: #ffffff;
+	background-color: #000000;
+	font-size: 24px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+	transition: background-color 600000s 0s, color 600000s 0s;
+	font-size: 24px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.landing-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.landing-page h1 {
+	font-size: 48px;
+	color: #66f000;
+	margin-top: 120px;
+	
+}
+.remove{
+	visibility: hidden;
+}
+.landing-page form {
+	border: 5px solid #66f000;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.landing-page-login {
+	padding: 40px;
+	width: 750px;
+	height: 400px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.landing-page span {
+	margin-top: 60px;
+	margin-bottom: 60px;
 }
+
 
 
 
@@ -107,4 +115,103 @@ button {
     margin-top: 0.75em;
     font-size: 1rem;
   }
+
+.landing-page-login {
+	color: #66f000;
+}
+
+.landing-page-login-username {
+	margin-bottom: 20px;
+}
+
+.main-button {
+	background-color: #66f000;
+	color: #ffffff;
+	font-size: 24px;
+	border: 0;
+	font-family: JetBrains Mono, monospace;
+	padding: 10px 60px;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	line-height: 1;
+}
+
+.form-submit-redirect {
+	display: flex;
+	gap: 60px;
+}
+
+.landing-page-login-username input,
+.landing-page-login-password input {
+	background: transparent;
+	color: #66f000;
+	outline: none;
+	border: none;
+	font-family: JetBrains Mono, monospace;
+	font-size: 24px;
+	letter-spacing: 3px;
+}
+
+/* list  */
+.user-list-wrap {
+	display: flex;
+	margin-left: 200px;
+	color: #66f000;
+	height: 100vh;
+}
+
+.margin-separator {
+	border-left: 2px solid white;
+}
+
+.user-list {
+	color: #66f000;
+	padding-left: 50px;
+}
+
+.user-list h2 {
+	font-size: 30px;
+	margin-top: 200px;
+}
+
+.user-list-container{
+	margin-top: 40px;
+}
+
+.user-list-container form{
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.user-list-container form button{
+	background-color: transparent;
+	color: #ffffff;
+	font-size: 24px;
+	border: 0;
+	font-family: JetBrains Mono, monospace;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	line-height: 1;
+	width: 100%;
+	display: flex;
+	border: 4px solid #66f000;
+	margin-bottom: 10px;
+}
+
+.user-list-container form button .nickname{
+	color: #445DA8;
+	min-width: 200px;
+    align-items: flex-start;
+    display: flex;
+	padding-left: 10px;
+}
+
+.user-list-container form button .message{
+	text-transform: capitalize;
+
 }
