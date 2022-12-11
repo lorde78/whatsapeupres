@@ -1,7 +1,7 @@
-
 import { useLocation, useNavigate, Navigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { userContext } from "../Context/UserContext";
+import Typewriter from "typewriter-effect";
 import useGetJWT from "../Hook/useGetJWT";
 
 export default function Login() {
@@ -13,7 +13,7 @@ export default function Login() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [loggedUser, setLoggedUser] = useContext(userContext);
-
+	const [loading, setLoading] = useState(false);
 	const handleUsername = (e) => {
 		setUsername(e.target.value);
 	};
@@ -21,7 +21,6 @@ export default function Login() {
 	const handlePassword = (e) => {
 		setPassword(e.target.value);
 	};
-    
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -36,13 +35,36 @@ export default function Login() {
 		});
 	};
 
-    
+	setTimeout(() => {
+		document.querySelector("h1 .Typewriter__cursor").classList.add("remove");
+	}, 5000);
+
+	
 
 	return (
 		<div class="landing-page">
-			<h1>Welcome to WhatsHack</h1>
-			<span>Welcome to the most insecure chat app on internet...</span>
-			<form class="landing-page-login" onSubmit={handleSubmit} >
+			<h1>
+				<Typewriter
+					onInit={(typewriter) => {
+						typewriter
+							.typeString("Welcome to WhatsHack...")
+							.start();
+					}}
+				/>
+			</h1>
+			<span>
+				<Typewriter
+					onInit={(typewriter) => {
+						typewriter
+							.pauseFor(5000)
+							.typeString(
+								"Welcome to the most insecure chat app on internet..."
+							)
+							.start();
+					}}
+				/>
+			</span>
+			<form class="landing-page-login" onSubmit={handleSubmit}>
 				<div>
 					<div class="landing-page-login-username">
 						<label htmlFor="username">Please enter your nickname : </label>
@@ -51,7 +73,6 @@ export default function Login() {
 							id="username"
 							onChange={handleUsername}
 							value={username}
-                           
 						/>
 					</div>
 					<div class="landing-page-login-password">
@@ -61,7 +82,6 @@ export default function Login() {
 							id="password"
 							onChange={handlePassword}
 							value={password}
-                           
 						/>
 					</div>
 				</div>

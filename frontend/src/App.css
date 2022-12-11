@@ -1,37 +1,39 @@
-
 body {
 	font-family: JetBrains Mono, monospace;
-	color: #FFFFFF;
+	color: #ffffff;
 	background-color: #000000;
 	font-size: 24px;
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-  transition: background-color 600000s 0s, color 600000s 0s;
-  font-size: 24px;
+	transition: background-color 600000s 0s, color 600000s 0s;
+	font-size: 24px;
 }
 
 .landing-page {
 	display: flex;
-    flex-direction: column;
-    align-items: center;
+	flex-direction: column;
+	align-items: center;
 }
 
-.landing-page h1{
+.landing-page h1 {
 	font-size: 48px;
-	color: #66F000;
+	color: #66f000;
 	margin-top: 120px;
+	
 }
-
+.remove{
+	visibility: hidden;
+}
 .landing-page form {
-	border: 5px solid #66F000;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+	border: 5px solid #66f000;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
-.landing-page-login{
+.landing-page-login {
 	padding: 40px;
 	width: 750px;
 	height: 400px;
@@ -42,38 +44,101 @@ input:-webkit-autofill:focus {
 	margin-bottom: 60px;
 }
 
-.landing-page-login{
-	color: #66F000;
+.landing-page-login {
+	color: #66f000;
 }
 
-.landing-page-login-username{
+.landing-page-login-username {
 	margin-bottom: 20px;
 }
 
-.main-button{
-	background-color: #66F000;
-	color: #FFFFFF;
+.main-button {
+	background-color: #66f000;
+	color: #ffffff;
 	font-size: 24px;
-	border: 0; 
+	border: 0;
 	font-family: JetBrains Mono, monospace;
 	padding: 10px 60px;
 	text-transform: uppercase;
 	text-decoration: none;
-    text-align: center;
-    line-height: 1;
+	text-align: center;
+	line-height: 1;
 }
 
-.form-submit-redirect{
+.form-submit-redirect {
 	display: flex;
 	gap: 60px;
 }
 
-.landing-page-login-username input, .landing-page-login-password input {
+.landing-page-login-username input,
+.landing-page-login-password input {
 	background: transparent;
-    color: #66F000;
-    outline: none;
-    border: none;
+	color: #66f000;
+	outline: none;
+	border: none;
 	font-family: JetBrains Mono, monospace;
 	font-size: 24px;
 	letter-spacing: 3px;
+}
+
+/* list  */
+.user-list-wrap {
+	display: flex;
+	margin-left: 200px;
+	color: #66f000;
+	height: 100vh;
+}
+
+.margin-separator {
+	border-left: 2px solid white;
+}
+
+.user-list {
+	color: #66f000;
+	padding-left: 50px;
+}
+
+.user-list h2 {
+	font-size: 30px;
+	margin-top: 200px;
+}
+
+.user-list-container{
+	margin-top: 40px;
+}
+
+.user-list-container form{
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.user-list-container form button{
+	background-color: transparent;
+	color: #ffffff;
+	font-size: 24px;
+	border: 0;
+	font-family: JetBrains Mono, monospace;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	line-height: 1;
+	width: 100%;
+	display: flex;
+	border: 4px solid #66f000;
+	margin-bottom: 10px;
+}
+
+.user-list-container form button .nickname{
+	color: #445DA8;
+	min-width: 200px;
+    align-items: flex-start;
+    display: flex;
+	padding-left: 10px;
+}
+
+.user-list-container form button .message{
+	text-transform: capitalize;
 }
