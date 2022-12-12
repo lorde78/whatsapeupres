@@ -18,7 +18,6 @@ const getMessages = (token) => {
     })
       .then((data) => data.json())
       .then((data) => setMessages(data))
-      .then((data) => console.log(data))
       .catch((e) => {
         console.error(e);
       });

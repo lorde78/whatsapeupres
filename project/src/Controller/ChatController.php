@@ -66,7 +66,7 @@ class ChatController extends AbstractController {
 
     #[Route( '/chat/{idChat}/{idUser}', name: 'app_message' )]
     public function createMessage(
-        HubInterface $hub, string $mercureSecret, ManagerRegistry $doctrine, EntityManagerInterface $entityManager, $idUser, $idChat
+        HubInterface $hub, string $mercureSecret, ManagerRegistry $doctrine, EntityManagerInterface $entityManager, $idUser,  $idChat
     )
     : JsonResponse {
         /*        $target = [];
@@ -76,6 +76,7 @@ class ChatController extends AbstractController {
                     ];
                 }*/
 
+        
         $currentUser = $this->getUser();
         $currentUserId = $currentUser->id;
 
@@ -84,6 +85,9 @@ class ChatController extends AbstractController {
         $message = new Message();
         $message->setChat( $idChat );
         $message->setIdUser( $currentUserId );
+
+        
+        // $message->setIdChat( $currentUserId );
 
         // tell Doctrine you want to (eventually) save the message (no queries yet)
         $entityManager->persist( $message );

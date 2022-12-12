@@ -14,7 +14,6 @@ const usegetContacts = (token) => {
   })
     .then((data) => data.json())
     .then((data) => setContacts(data))
-    .then((data) => console.log(data))
     .catch((e) => {
       console.error(e);
     });

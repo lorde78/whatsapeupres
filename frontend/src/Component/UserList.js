@@ -100,7 +100,7 @@ export default function UserList() {
 					}}
 				/></h2>
 				<span>
-					======================================================================
+					
 				</span>
 				<div class="user-list-container">
 					{userList.map((user) => (

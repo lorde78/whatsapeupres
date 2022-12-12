@@ -9,7 +9,8 @@ import { useDispatch } from 'react-redux';
 
 import { login } from './../../redux/reducers/auth';
 import { logout } from './../../redux/reducers/auth';
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as SecureStore from 'expo-secure-store';
 // create a component
 
@@ -22,14 +23,14 @@ const getToken = () => {
 };
 
 
-const LoginUser = () => {
+const LoginUser = ({navigation}) => {
   const dispatch = useDispatch();
   
-  const user = useSelector(state => state.user);
+  const user = useSelector(state => state.authReducer.jwt);
   // const getJWT = useGetJWT()
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [ respJWT, setRespJWT] = useState(null);
+  const [ respJWT, setRespJWT] = useState('');
   // const [jwt , setJWT] = useState("");
   /*    const [loggedUser, setLoggedUser] = useContext(userContext);*/
   
@@ -48,7 +49,7 @@ const LoginUser = () => {
   const getJWT = (username, password) => {
     const credentials = base64.encode(`${username}:${password}`);
     fetch(
-      "https://49b3-81-185-169-94.eu.ngrok.io/login",
+      "https://9ae0-81-185-172-212.eu.ngrok.io/login",
       {
         method: "get",
         credentials: "include",
@@ -58,6 +59,7 @@ const LoginUser = () => {
       }
       )
       .then((response) => response.json())
+      .then((response) => console.log(response))
       .then((responseData) => {
         setRespJWT(responseData);
         return responseData;
@@ -70,11 +72,12 @@ const LoginUser = () => {
       
       getJWT(username, password);
 
-      if(respJWT !== null) {
+      if(respJWT !== undefined) {
         setToken(respJWT.jwt);
-        getToken().then(token => console.log(token));
-        getToken().then(token => console.log(token));
+        dispatch(login(respJWT.jwt))
       }
+
+      navigation.navigate('Messages')
       // if(user !== null) {
       //   setToken(user);
       //   getToken().then(token => console.log(token));

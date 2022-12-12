@@ -4,44 +4,47 @@ const SIGNUP = "SIGNUP";
 const LOGOUT = "LOGOUT";
 
 // Action creators
-export const login = () => ({
+export const login = (data) => ({
     type: LOGIN,
+    payload: data
 })
 
 export const signUp = () => ({
     type: SIGNUP,
+    payload: null
 })
 
 export const logout = () => ({
-    type: LOGOUT
+    type: LOGOUT,
+    payload: null
 })
 
 // Initial state
 const initialState = {
-    user: null
+    jwt: null
 }
 
 // Root reducer
-const rootReducer = (state = initialState, action, data) => {
+const authReducer = (state = initialState, action, data) => {
     switch (action.type) {
         case LOGIN:
             return {
                 ...state,
-                user: state.user = data
+                jwt: action.payload
             }
         case SIGNUP:
             return {
                 ...state,
-                user: state.user = undefined
+                jwt: action.payload
             }
         case LOGOUT:
             return {
                 ...state,
-                user: state.user = undefined
+                jwt: action.payload
             }
         default:
             return state
     }
 }
 
-export default rootReducer
+export default authReducer
